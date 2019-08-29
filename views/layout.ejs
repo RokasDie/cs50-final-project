@@ -30,11 +30,21 @@
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#"
+            <a class="nav-link" href="/"
               >Home <span class="sr-only">(current)</span></a
             >
           </li>
+          <% if (user) { if (user.userType === "teacher") { %>
           <li class="nav-item">
+            <a class="nav-link" href="/teacher/">Teacher dashboard</a>
+          </li>
+          <% } else if (user.userType === "student") { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/student/">Student dashboard</a>
+          </li>
+          <% } } %>
+
+          <!-- <li class="nav-item">
             <a class="nav-link" href="#">Features</a>
           </li>
           <li class="nav-item">
@@ -42,7 +52,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">About</a>
-          </li>
+          </li> -->
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <input
@@ -72,13 +82,14 @@
         <% } %>
       </div>
     </nav>
-
-    <%- body %>
     <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
       crossorigin="anonymous"
     ></script>
+
+    <%- body %>
+
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
       integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"

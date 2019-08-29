@@ -1,0 +1,41 @@
+<div class="container">
+  <h1><%- homework.name %></h1>
+  <h2><%- homework.subtitle %></h2>
+  <p><%- homework.description %></p>
+  <br />
+  <form action="upload.php" method="post" enctype="multipart/form-data">
+    <div class="row">
+      <div class="custom-file">
+        <input
+          type="file"
+          name="file"
+          class="custom-file-input"
+          id="customFile"
+        />
+        <label class="custom-file-label" for="customFile">Choose file</label>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <input
+        type="submit"
+        class="btn btn-primary"
+        value="Submit homework"
+        name="submit"
+      />
+    </div>
+  </form>
+</div>
+<script>
+  // Add the following code if you want the name of the file appear on select
+  $(".custom-file-input").on("change", function() {
+    var fileName = $(this)
+      .val()
+      .split("\\")
+      .pop();
+    $(this)
+      .siblings(".custom-file-label")
+      .addClass("selected")
+      .html(fileName);
+  });
+</script>

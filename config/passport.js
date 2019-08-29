@@ -42,6 +42,7 @@ module.exports = function(passport) {
     })
   );
   passport.serializeUser(function(user, done) {
+    console.log(user);
     done(null, user.id);
   });
 
@@ -53,6 +54,7 @@ module.exports = function(passport) {
       },
       (err, rows) => {
         if (err) throw err;
+        delete rows.password;
         done(err, rows);
       }
     );

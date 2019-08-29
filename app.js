@@ -8,10 +8,12 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const passport = require("passport");
 
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+const indexRouter = require("./routes/index");
+const usersRouter = require("./routes/users");
+const teacherRouter = require("./routes/teacher");
+const studentRouter = require("./routes/student");
 
-var app = express();
+const app = express();
 
 //  Passport files
 require("./config/passport")(passport);
@@ -59,6 +61,8 @@ app.use(function(req, res, next) {
 // Routes
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/teacher", teacherRouter);
+app.use("/student", studentRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
