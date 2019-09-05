@@ -75,12 +75,6 @@ router.post("/register", (req, res, next) => {
                   req.flash("success_msg", "You are now registered ");
                   // take user to index
                   res.redirect("/users/login");
-                  // db.close(err => {
-                  //   if (err) {
-                  //     return console.error(err.message);
-                  //   }
-                  //   console.log("Close the database connection.");
-                  // });
                 }
               );
             })

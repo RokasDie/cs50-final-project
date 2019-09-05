@@ -1,0 +1,39 @@
+<div class="container col-5">
+  <% include ./partials/messages %>
+  <form action="/teacher/createHomework" method="POST">
+    <div class="form-group">
+      <label for="courseName">Homework Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="courseName"
+        placeholder="Enter course Name"
+        name="name"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="subtitle">Subtitle</label>
+      <input
+        type="text"
+        class="form-control"
+        id="subtitle"
+        placeholder="Homework subtitle"
+        name="subtitle"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="description">Homework description</label>
+      <textarea
+        class="form-control"
+        id="description"
+        name="description"
+        rows="3"
+        required
+      ></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
