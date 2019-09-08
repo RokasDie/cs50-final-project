@@ -1,5 +1,5 @@
 <link
-  href="https://unpkg.com/tabulator-tables@4.4.1/dist/css/tabulator.min.css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/tabulator/4.4.1/css/tabulator_midnight.min.css"
   rel="stylesheet"
 />
 <script
@@ -7,16 +7,16 @@
   src="https://unpkg.com/tabulator-tables@4.4.1/dist/js/tabulator.min.js"
 ></script>
 <div class="container">
-  <h1><%- homeworks[0].name %></h1>
-  <h2><%- homeworks[0].subtitle %></h2>
-  <p><%- homeworks[0].description %></p>
+  <h1><%- homeworks.name %></h1>
+  <h2><%- homeworks.subtitle %></h2>
+  <p><%- homeworks.description %></p>
   <div id="submissions"></div>
   <% var data = homeworks %>
   <script>
     var table = new Tabulator("#submissions", {
       index: "id",
       height: 205, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
-      data: <%- (homeworks) %>, //assign data to table
+      data: <%- JSON.stringify(submissions) %>, //assign data to table
       layout: "fitColumns", //fit columns to width of table (optional)
       columns: [
         //Define Table Columns
@@ -26,10 +26,8 @@
           field: "fileName",
           formatter: "link",
           formatterParams: {
-            labelField: "name",
             urlField: "id",
             urlPrefix: "/teacher/homework/downloads/",
-            target: "download"
           }
         },
         { title: "Review", field: "review", editor: true },
@@ -41,7 +39,7 @@
         }
       ],
       // Callback for when the cell is edited
-      cellEdited: (cell) => {
+      cellEdited: cell => {
         // POST request
         fetch("/teacher/homework", {
           method: "POST",
