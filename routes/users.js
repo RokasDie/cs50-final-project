@@ -10,7 +10,6 @@ var db = new sqlite3.Database(
     if (err) {
       return console.error(err.message);
     }
-    console.log("Connected to the database.");
   }
 );
 

@@ -21,9 +21,9 @@ The idea is simple. The user can register either as student or teacher. During r
 - Password: it is checked to match, must be at least 6 symbols long and is hashed after checks are done
 - Checkbox for what type of user you will be (student or teacher)
 
-Student registration allows you to access student dashboard, where you cna see created homeworks. Entering the homework you can upload a file. Once the teacher grades and reviews your submission it will appear instead of <input type="file">.
+Student registration allows you to access student dashboard, where you can see created homework. Entering the homework you can upload a file. Once the teacher grades and reviews your submission it will appear instead of <input type="file">.
 
-For teachers teacher dashboard is unlocked, where they can create a homework and see student's which submitted homework. When accessing the homework, teacher can download the submitted file and then write a review and grade it.
+For teachers, teacher dashboard is unlocked, where they can create a homework and see student's which submitted homework. When accessing the homework, teacher can download the submitted file and then write a review and grade it.
 
 ### Routing
 
@@ -35,12 +35,22 @@ The webpage uses sessions to confirm that user is registered. Once the user logi
 
 ### Database
 
-Database stores all users, homeworks, student submissions. The tables, like student submissions uses foreign keys to relate users to submitted homework. Moreover, homeworks table uses foreign keys to relate the homework to a teacher.
+Database stores all users, homework, student submissions. The tables, like student submissions uses foreign keys to relate users to submitted homework. Moreover, homework table uses foreign keys to relate the homework to a teacher.
 
 ## Possible improvements
 
-As all applications this one can also be improved. Possible imprevements:
+As all applications this one can also be improved. Possible improvements:
 
 - Have administrator account which confirms user identity, so that student could not register as a teacher
 - Ability to change account details
 - Have a way for teacher to upload videos to explain the assignment
+- Notificaitons to email about new homeworks or submissions
+
+## How to launch application
+
+1. Check that you have Node version 8+
+2. Clone the code: `git clone https://github.com/RokasDie/cs50-final-project.git`
+3. Run command prompt in the folder and run `npm install` to install all dependencies
+4. Once installed run command `npm start`
+5. In your browser go to `localhost:3000`
+6. You are ready to go!

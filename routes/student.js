@@ -11,7 +11,6 @@ var db = new sqlite3.Database(
     if (err) {
       return console.error(err.message);
     }
-    console.log("Connected to the database.");
   }
 );
 
@@ -35,13 +34,16 @@ router.get(
         if (rows) {
           res.render("studentSubmission", { homeworks: rows });
         } else {
-          console.log("sudas");
           db.get(
             "SELECT * from homeworks WHERE homeworks.id = $id",
             { $id: req.params.id },
             (err, rows2) => {
+              console.log(rows2);
               if (err) throw err;
-              res.render("studentSubmission", { homework: rows2 });
+              res.render("studentSubmission", {
+                homework: rows2,
+                homeworks: null
+              });
             }
           );
         }
@@ -55,9 +57,7 @@ router.post(
   ensureAuthenticated("student"),
   upload.single("file"),
   (req, res, next) => {
-    console.log(req.file);
     if (!req.file) {
-      console.log("No file received");
       message = "Error! in image upload.";
       res.render("studentSubmission", { message: message, status: "danger" });
     } else {

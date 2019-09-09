@@ -3,7 +3,7 @@
   <h2><%- homework.subtitle %></h2>
   <p><%- homework.description %></p>
   <br />
-  <% if (!homework.fileName) { %>
+  <% if (!homeworks) { %>
   <form
     action="/student/studentSubmission/<%- homework.id %>"
     method="post"
@@ -32,8 +32,8 @@
     </div>
   </form>
   <% } else {%>
-  <h3>Grade: <%- homework.grade %></h3>
-  <h3>Review: <%- homework.review %></h3>
+  <h3>Grade: <%- homeworks.grade %></h3>
+  <h3>Review: <%- homeworks.review %></h3>
   <% }%>
 </div>
 <script>
